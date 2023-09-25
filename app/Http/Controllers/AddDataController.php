@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DiseaseData;
 use Illuminate\Http\Request;
 
 class AddDataController extends Controller
@@ -28,7 +29,15 @@ class AddDataController extends Controller
             'cases_number.required' => 'يجب ادخال عدد الحالات',
             'cases_number.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
             'cases_number.min' => 'يجب ادخال عدد الحالات اكبر من 0'
-        ]
-    );
+        ]);
+
+        DiseaseData::create([
+            'date' => $request->date,
+            'disease' => $request->disease,
+            'examination' => $request->examination,
+            'cases_number' => $request->cases_number
+        ]);
+
+        return back()->with('success', 'تم اضافة البيانات بنجاح');
     }
 }
