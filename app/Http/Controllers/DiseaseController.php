@@ -34,4 +34,36 @@ class DiseaseController extends Controller
         $diseases = Disease::get();
         return view('pages.disease.show', compact('diseases'));
     }
+
+    public function edit($id)
+    {
+        $disease = Disease::find($id);
+        return view('pages.disease.edit', compact('disease'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required'
+        ],[
+            'name.required' => 'يجب إدخال إسم المرض'
+        ]);
+
+
+        Disease::find($id)->update([
+            'name' => $request->name
+        ]);
+
+
+        return back()->with('success', 'تم التعديل بنجاح');
+    }
+
+
+    public function delete($id)
+    {
+        Disease::find($id)->delete();
+
+        return back()->with('success', 'تم الحذف بنجاح');
+    }
 }

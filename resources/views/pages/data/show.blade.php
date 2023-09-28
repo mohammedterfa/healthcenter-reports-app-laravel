@@ -71,7 +71,7 @@
                                             <a href="{{ route('data.edit', $data->id) }}" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">تعديل</a>
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <form action="{{ route('data.delete', $data->id) }}" method="POST">@csrf
+                                            <form id="form" action="{{ route('data.delete', $data->id) }}" method="POST">@csrf
                                                 @method('DELETE')
                                                 <button type="submit"  onclick="getConfirmation()" class="font-medium text-red-800 whitespace-nowrap dark:text-red-600">حذف</a>
                                             </form>
@@ -89,18 +89,6 @@
 
         </div>
 
-<script>
-    function getConfirmation() {
-        var result = document.getElementById("result");
-        var form = document.getElementById("form");
-        var retVal = confirm("هل أنت متأكد أنك تريد حذف هذه البيانات ؟");
-        form.reset();
-        if (retVal == false) {
-            result.innerHTML = "Any sort of accidental click can be handled this way !";
-        } else {
-            result.innerHTML = "Form Submitted !";
-        }
-    }
-</script>
+@include('alerts.confirm')
 
 </x-app-layout>

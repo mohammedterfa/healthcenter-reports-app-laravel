@@ -40,5 +40,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/disease/index', [DiseaseController::class, 'index'])->name('disease.index');
     Route::post('/disease/store', [DiseaseController::class, 'store'])->name('disease.store');
     Route::get('/disease/show', [DiseaseController::class, 'show'])->name('disease.show');
+    Route::get('/disease/edit/{id}', [DiseaseController::class, 'edit'])->name('disease.edit');
+    Route::post('/disease/update/{id}', [DiseaseController::class, 'update'])->name('disease.update');
+    Route::delete('/disease/delete/{id}', [DiseaseController::class, 'delete'])->name('disease.delete');
 
 });
