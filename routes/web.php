@@ -33,6 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('data/store_data', [AddDataController::class, 'store'])->name('store_data');
     Route::get('data/show_data', [AddDataController::class, 'show'])->name('show_data');
     Route::get('data/edit/{id}', [AddDataController::class, 'edit'])->name('data.edit');
+    Route::post('data/update/{id}', [AddDataController::class, 'update'])->name('data.update');
+    Route::delete('data/delete/{id}', [AddDataController::class, 'delete'])->name('data.delete');
 
 
     Route::get('/disease/index', [DiseaseController::class, 'index'])->name('disease.index');

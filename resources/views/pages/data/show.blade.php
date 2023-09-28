@@ -1,13 +1,15 @@
 <x-app-layout>
+
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto" >
             <div class="flex flex-col col-span-full  bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
                     <h2 class="font-semibold text-slate-800 dark:text-slate-100">عرض البيانات المُدخلة</h2>
                 </header>
-                @include('alerts.success')
+
                 <div id="dashboard-card-04-legend" class="px-5 py-3 flex justify-center">
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        @include('alerts.success')
                         <table class="w-full text-right text-gray-500 dark:text-gray-400">
                             <thead class=" text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
@@ -69,7 +71,10 @@
                                             <a href="{{ route('data.edit', $data->id) }}" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">تعديل</a>
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <a href="#" class="font-medium text-red-800 whitespace-nowrap dark:text-red-600">حذف</a>
+                                            <form action="{{ route('data.delete', $data->id) }}" method="POST">@csrf
+                                                @method('DELETE')
+                                                <button type="submit"  onclick="getConfirmation()" class="font-medium text-red-800 whitespace-nowrap dark:text-red-600">حذف</a>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -83,4 +88,19 @@
             </div>
 
         </div>
+
+<script>
+    function getConfirmation() {
+        var result = document.getElementById("result");
+        var form = document.getElementById("form");
+        var retVal = confirm("هل أنت متأكد أنك تريد حذف هذه البيانات ؟");
+        form.reset();
+        if (retVal == false) {
+            result.innerHTML = "Any sort of accidental click can be handled this way !";
+        } else {
+            result.innerHTML = "Form Submitted !";
+        }
+    }
+</script>
+
 </x-app-layout>

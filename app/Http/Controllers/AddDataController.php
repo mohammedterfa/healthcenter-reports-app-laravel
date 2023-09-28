@@ -53,8 +53,48 @@ class AddDataController extends Controller
 
     public function edit($id)
     {
+        $data = DiseaseData::find($id);
 
         $diseases = Disease::get();
-        return view('pages.data.edit', compact('diseases'));
+        return view('pages.data.edit', compact('diseases', 'data'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'disease' => 'required|integer',
+            'examination' => 'required',
+            'cases_number' => 'required|integer|min:1'
+         ],
+         [
+             'date.required' => 'يجب إختيار التاريخ',
+             'date.date' => 'صيغة التاريخ غير صحيحة',
+             'disease.required' => 'يجب اختيار المرض',
+             'disease.integer' => 'يجب اختيار مرض',
+             'examination.required' => 'يجب اختيار التشخيص',
+             'cases_number.required' => 'يجب ادخال عدد الحالات',
+             'cases_number.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
+             'cases_number.min' => 'يجب ادخال عدد الحالات اكبر من 0'
+         ]);
+
+
+         DiseaseData::find($id)->update([
+            'date' => $request->date,
+            'disease' => $request->disease,
+            'examination' => $request->examination,
+            'cases_number' => $request->cases_number
+         ]);
+
+
+         return back()->with('success', 'تم تعديل البيانات بنجاح');
+    }
+
+    public function delete($id)
+    {
+        DiseaseData::find($id)->delete();
+
+        return back()->with('success', 'تم الحذف بنجاح');
     }
 }
