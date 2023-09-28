@@ -32,6 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('data/add_data', [AddDataController::class, 'index'])->name('add_data');
     Route::post('data/store_data', [AddDataController::class, 'store'])->name('store_data');
     Route::get('data/show_data', [AddDataController::class, 'show'])->name('show_data');
+    Route::get('data/edit/{id}', [AddDataController::class, 'edit'])->name('data.edit');
 
 
     Route::get('/disease/index', [DiseaseController::class, 'index'])->name('disease.index');

@@ -49,4 +49,12 @@ class AddDataController extends Controller
         $all_data = DiseaseData::get();
         return view('pages/data/show', compact('all_data'));
     }
+
+
+    public function edit($id)
+    {
+
+        $diseases = Disease::get();
+        return view('pages.data.edit', compact('diseases'));
+    }
 }

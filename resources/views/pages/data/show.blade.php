@@ -66,7 +66,7 @@
                                             {{ $data->date }}
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <a href="#" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">تعديل</a>
+                                            <a href="{{ route('data.edit', $data->id) }}" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">تعديل</a>
                                         </td>
                                         <td class="px-6 py-4 text-right">
                                             <a href="#" class="font-medium text-red-800 whitespace-nowrap dark:text-red-600">حذف</a>
