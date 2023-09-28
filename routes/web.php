@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiseaseController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/disease/edit/{id}', [DiseaseController::class, 'edit'])->name('disease.edit');
     Route::post('/disease/update/{id}', [DiseaseController::class, 'update'])->name('disease.update');
     Route::delete('/disease/delete/{id}', [DiseaseController::class, 'delete'])->name('disease.delete');
+
+
+
+    Route::get('/reports/index', [ReportController::class, 'index'])->name('reports.index');
+    Route::post('/reports/detailed', [ReportController::class, 'detailed'])->name('reports.detailed');
 
 });
