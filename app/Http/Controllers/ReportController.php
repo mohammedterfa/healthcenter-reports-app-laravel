@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Disease;
 use Illuminate\Http\Request;
 
-use PDF;
+use Mccarlosen\LaravelMpdf\Facades\LaravelMpdf as PDF;
 
 class ReportController extends Controller
 {
