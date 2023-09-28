@@ -1,10 +1,5 @@
 <x-app-layout>
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto" >
-
-
-        <!-- Cards -->
-        <div class="">
-
             <div class="flex flex-col col-span-full  bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
                     <h2 class="font-semibold text-slate-800 dark:text-slate-100">عرض البيانات المُدخلة</h2>
@@ -49,23 +44,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Apple MacBook Pro 17"
-                                    </th>
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Silver
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Laptop
-                                    </td>
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        $2999
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="#" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">Edit</a>
-                                    </td>
-                                </tr>
+                                @foreach ($all_data as $data)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $data->disease }}
+                                        </th>
+                                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $data->examination }}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $data->cases_number }}
+                                        </td>
+                                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $data->date }}
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <a href="#" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">Edit</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -76,6 +73,4 @@
             </div>
 
         </div>
-
-    </div>
 </x-app-layout>
