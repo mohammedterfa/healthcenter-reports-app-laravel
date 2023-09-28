@@ -4,6 +4,7 @@ use App\Http\Controllers\AddDataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DiseaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('pages/utility/404');
     });
 
-    Route::get('/add_data', [AddDataController::class, 'index'])->name('add_data');
-    Route::post('/store_data', [AddDataController::class, 'store'])->name('store_data');
-    Route::get('/show_data', [AddDataController::class, 'show'])->name('show_data');
+    Route::get('data/add_data', [AddDataController::class, 'index'])->name('add_data');
+    Route::post('data/store_data', [AddDataController::class, 'store'])->name('store_data');
+    Route::get('data/show_data', [AddDataController::class, 'show'])->name('show_data');
+
+
+    Route::get('/disease/index', [DiseaseController::class, 'index'])->name('disease.index');
+    Route::post('/disease/store', [DiseaseController::class, 'store'])->name('disease.store');
+    Route::get('/disease/show', [DiseaseController::class, 'show'])->name('disease.show');
+
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disease;
 use App\Models\DiseaseData;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class AddDataController extends Controller
 {
     public function index()
     {
-        return view('pages/data/add_data');
+        $diseases = Disease::get();
+        return view('pages/data/add_data', compact('diseases'));
     }
 
     public function store(Request $request)

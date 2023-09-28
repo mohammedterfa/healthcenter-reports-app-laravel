@@ -25,8 +25,9 @@
                             <label for="disease" class="block mb-2 text-lg  font-medium text-gray-900 dark:text-white">المرض</label>
                             <select type="text" id="disease" name="disease" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  px-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option value="">إختيار المرض</option>
-                                <option value="1" @if(old('disease') == 1) selected @endif>ملاريا</option>
-                                <option value="2" @if(old('disease') == 2) selected @endif>فسحة</option>
+                                @foreach ($diseases as $disease)
+                                    <option value="{{ $disease->id }}" @if(old('disease') == $disease->id ) selected @endif>{{ $disease->name }}</option>
+                                @endforeach
                             </select>
                             @error('disease')
                                 <span class="text-red-600">{{ $message }}</span>

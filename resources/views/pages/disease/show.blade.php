@@ -2,7 +2,7 @@
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto" >
             <div class="flex flex-col col-span-full  bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-                    <h2 class="font-semibold text-slate-800 dark:text-slate-100">عرض البيانات المُدخلة</h2>
+                    <h2 class="font-semibold text-slate-800 dark:text-slate-100">عرض الامراض</h2>
                 </header>
                 @include('alerts.success')
                 <div id="dashboard-card-04-legend" class="px-5 py-3 flex justify-center">
@@ -14,22 +14,7 @@
                                     <th scope="col" class="px-6 py-3">
                                         اسم المرض
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        <div class="flex items-center">
-                                            الحالة
-                                            <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
-                                            </svg></a>
-                                        </div>
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        <div class="flex items-center">
-                                            عدد الحالات
-                                            <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
-                                            </svg></a>
-                                        </div>
-                                    </th>
+
                                     <th scope="col" class="px-6 py-3">
                                         <div class="flex items-center">
                                             التاريخ
@@ -41,33 +26,26 @@
                                     <th scope="col" class="px-6 py-3">
                                         <span class="sr-only">تعديل</span>
                                     </th>
+
                                     <th scope="col" class="px-6 py-3">
                                         <span class="sr-only">حذف</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($all_data as $data)
+                                @foreach ($diseases as $disease)
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $data->disease_name->name }}
+                                            {{ $disease->name }}
                                         </th>
+
                                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            @if( $data->examination == 1)
-                                                <span class="text-green-600">موجبة </span>
-                                            @else
-                                                <span class="text-red-600">سالبة </span>
-                                            @endif
-                                        </td>
-                                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $data->cases_number }}
-                                        </td>
-                                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $data->date }}
+                                        {{ $disease->created_at->format('Y-m-d') }}
                                         </td>
                                         <td class="px-6 py-4 text-right">
                                             <a href="#" class="font-medium text-blue-800 whitespace-nowrap dark:text-blue-600">تعديل</a>
                                         </td>
+
                                         <td class="px-6 py-4 text-right">
                                             <a href="#" class="font-medium text-red-800 whitespace-nowrap dark:text-red-600">حذف</a>
                                         </td>

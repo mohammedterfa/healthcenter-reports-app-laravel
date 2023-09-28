@@ -19,6 +19,6 @@ class DiseaseData extends Model
 
     public function disease_name()
     {
-        return $this->hasOne(Diseae::class, 'id', 'disease');
+        return $this->hasOne(Disease::class, 'id', 'disease');
     }
 }
