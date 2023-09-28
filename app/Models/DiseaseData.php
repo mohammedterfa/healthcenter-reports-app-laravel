@@ -15,4 +15,10 @@ class DiseaseData extends Model
         'examination',
         'cases_number',
     ];
+
+
+    public function disease_name()
+    {
+        return $this->hasOne(Diseae::class, 'id', 'disease');
+    }
 }
