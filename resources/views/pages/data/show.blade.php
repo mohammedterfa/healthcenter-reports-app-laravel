@@ -50,7 +50,11 @@
                                             {{ $data->disease }}
                                         </th>
                                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $data->examination }}
+                                            @if( $data->examination == 1)
+                                                موجبة
+                                            @else
+                                                سالبة
+                                            @endif
                                         </td>
                                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $data->cases_number }}
