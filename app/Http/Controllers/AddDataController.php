@@ -40,4 +40,10 @@ class AddDataController extends Controller
 
         return back()->with('success', 'تم اضافة البيانات بنجاح');
     }
+
+
+    public function show ()
+    {
+        return view('pages/data/show');
+    }
 }
