@@ -19,6 +19,10 @@ class DiseaseData extends Model
         'cases_number',
     ];
 
+    protected $casts = [
+        'date' => 'date',
+    ];
+
 
     public function disease_name()
     {
