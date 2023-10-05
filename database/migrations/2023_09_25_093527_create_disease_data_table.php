@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->integer('disease');
-            $table->boolean('examination');
-            $table->integer('cases_number');
+            $table->integer('positive');
+            $table->integer('negative');
             $table->timestamps();
         });
     }

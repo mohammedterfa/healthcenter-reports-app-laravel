@@ -17,6 +17,8 @@ class DiseaseData extends Model
         'disease',
         'examination',
         'cases_number',
+        'positive',
+        'negative'
     ];
 
     protected $casts = [

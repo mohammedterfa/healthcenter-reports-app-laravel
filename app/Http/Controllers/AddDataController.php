@@ -19,25 +19,27 @@ class AddDataController extends Controller
         $request->validate([
            'date' => 'required|date',
            'disease' => 'required|integer',
-           'examination' => 'required',
-           'cases_number' => 'required|integer|min:1'
+           'positive' => 'required|integer|min:1',
+           'negative' => 'required|integer|min:1',
         ],
         [
             'date.required' => 'يجب إختيار التاريخ',
             'date.date' => 'صيغة التاريخ غير صحيحة',
             'disease.required' => 'يجب اختيار المرض',
             'disease.integer' => 'يجب اختيار مرض',
-            'examination.required' => 'يجب اختيار التشخيص',
-            'cases_number.required' => 'يجب ادخال عدد الحالات',
-            'cases_number.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
-            'cases_number.min' => 'يجب ادخال عدد الحالات اكبر من 0'
+            'positive.required' => 'يجب ادخال عدد الحالات',
+            'positive.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
+            'positive.min' => 'يجب ادخال عدد الحالات اكبر من 0',
+            'negative.required' => 'يجب ادخال عدد الحالات',
+            'negative.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
+            'negative.min' => 'يجب ادخال عدد الحالات اكبر من 0',
         ]);
 
         DiseaseData::create([
             'date' => $request->date,
             'disease' => $request->disease,
-            'examination' => $request->examination,
-            'cases_number' => $request->cases_number
+            'negative' => $request->negative,
+            'positive' => $request->positive
         ]);
 
         return back()->with('success', 'تم اضافة البيانات بنجاح');
@@ -65,26 +67,29 @@ class AddDataController extends Controller
         $request->validate([
             'date' => 'required|date',
             'disease' => 'required|integer',
-            'examination' => 'required',
-            'cases_number' => 'required|integer|min:1'
+            'positive' => 'required|integer|min:1',
+            'negative' => 'required|integer|min:1',
          ],
          [
              'date.required' => 'يجب إختيار التاريخ',
              'date.date' => 'صيغة التاريخ غير صحيحة',
              'disease.required' => 'يجب اختيار المرض',
              'disease.integer' => 'يجب اختيار مرض',
-             'examination.required' => 'يجب اختيار التشخيص',
-             'cases_number.required' => 'يجب ادخال عدد الحالات',
-             'cases_number.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
-             'cases_number.min' => 'يجب ادخال عدد الحالات اكبر من 0'
+             'positive.required' => 'يجب ادخال عدد الحالات',
+             'positive.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
+             'positive.min' => 'يجب ادخال عدد الحالات اكبر من 0',
+             'negative.required' => 'يجب ادخال عدد الحالات',
+             'negative.integer' => 'يجب أن يكون الادخال بصيغة أرقام',
+             'negative.min' => 'يجب ادخال عدد الحالات اكبر من 0',
          ]);
 
 
          DiseaseData::find($id)->update([
             'date' => $request->date,
             'disease' => $request->disease,
-            'examination' => $request->examination,
-            'cases_number' => $request->cases_number
+            'negative' => $request->negative,
+            'positive' => $request->positive
+
          ]);
 
 
