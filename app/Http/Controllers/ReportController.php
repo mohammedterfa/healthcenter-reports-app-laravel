@@ -17,11 +17,17 @@ class ReportController extends Controller
     }
 
 
-    public function detailed()
+    public function detailed(Request $request)
     {
-        $diseases = DiseaseData::orderBy('date', 'desc')->get();
-
-        $pdf = PDF::loadView('pdf.detailed', compact('diseases'));
+        $diseases = DiseaseData::
+    where('date', '>=', $request->start_date)
+    ->where('date', '<=', $request->end_date)
+    ->groupBy('disease') // تجميع بناءً على اسم المرض
+    ->selectRaw('disease, SUM(positive) as total_positive, SUM(negative) as total_negative')
+    ->get();
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $pdf = PDF::loadView('pdf.detailed', compact('diseases', 'start_date', 'end_date'));
         return $pdf->stream('detailed.pdf');
     }
 }
