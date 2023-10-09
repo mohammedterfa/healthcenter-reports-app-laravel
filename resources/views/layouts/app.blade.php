@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="{{ asset('build/assets/app-b31474b2.css') }}">
+        <script src="{{ asset('build/assets/app-1bb94ff8.js') }}"></script>
 
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
