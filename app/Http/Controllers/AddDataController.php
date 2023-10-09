@@ -17,7 +17,7 @@ class AddDataController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'date' => 'required|date',
+           'date' => 'required|date|unique:disease_data,date',
            'disease' => 'required|integer',
            'positive' => 'required|integer|min:1',
            'negative' => 'required|integer|min:1',
@@ -25,6 +25,7 @@ class AddDataController extends Controller
         [
             'date.required' => 'يجب إختيار التاريخ',
             'date.date' => 'صيغة التاريخ غير صحيحة',
+            'date.unique' => 'تم إضافة البيانات بالفعل لهذا التاريخ',
             'disease.required' => 'يجب اختيار المرض',
             'disease.integer' => 'يجب اختيار مرض',
             'positive.required' => 'يجب ادخال عدد الحالات',

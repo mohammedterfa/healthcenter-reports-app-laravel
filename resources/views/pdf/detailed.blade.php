@@ -21,33 +21,43 @@ table {
 }
 </style>
 <body>
-<h2>تقرير</h2>
-<p style="text-align: right;">التاريخ : 1/9/2023 إلى 30/9/2023 </p>
+<p>بسم الله الرحمن الرحيم</p>
+<p>مركز صحي قرية ود غلوقة</p>
+<p style="text-align: right">السيدة / مديرة الشؤون الصحية بمحلية رفاعة شرق الجزيرة</p>
+<p>الموضوع: فحوصات طبية للمركز</p>
+<p>مرفق كشف تحليلي للفحوصات الطبية التي أجريت بمختبر المركز الصحة بقرية ود غلوقة<br> عن الفترة من 5 مايو 2023 إلى سبتمبر 2023</p>
 <table>
     <tr>
-        <th>المرض</th>
-        <th>الحالة</th>
-        <th>عدد الحالات</th>
         <th>التاريخ</th>
+        <th>نوع الفحص</th>
+        <th>العدد الكلي</th>
+        <th> P</th>
+        <th>N</th>
     </tr>
 
     <tbody>
         @foreach ($diseases as $disease)
             <tr>
-                <td>{{ $disease->disease_name->name }}</td>
-                <td>
-                    @if($disease->examination == 1)
-                        موجبة
-                    @else
-                        سالبة
-                    @endif
-                </td>
-                <td>{{ $disease->cases_number }}</td>
                 <td>{{ $disease->date->format('Y-m-d') }}</td>
+                <td>{{ $disease->disease_name->name }}</td>
+                <td>{{ $disease->negative + $disease->positive }}</td>
+                <td>{{ $disease->positive }}</td>
+                <td>{{ $disease->negative }}</td>
+
             </tr>
         @endforeach
-    </tbody>
+        </tbody>
 
 </table>
+
+<p style="text-align: right">المختبر : مريم عوض
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    المدير : عباس محمد</p>
+
 </body>
 </html>
