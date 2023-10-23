@@ -44,6 +44,12 @@ table {
 
             </tr>
         @endforeach
+        <tr>
+            <td><b>المجموع</b></td>
+            <td><b>{{ $diseases->sum('total_positive') + $diseases->sum('total_negative') }}</b></td>
+            <td><b>{{ $diseases->sum('total_positive') }}</b></td>
+            <td><b>{{ $diseases->sum('total_negative') }}</b></td>
+        </tr>
         </tbody>
 
 </table>
