@@ -28,6 +28,7 @@ table {
 <p>مرفق كشف تحليلي للفحوصات الطبية التي أجريت بمختبر المركز الصحة بقرية ود غلوقة<br> عن الفترة من   {{ $start_date }} إلى  {{ $end_date }}</p>
 <table>
     <tr>
+        <th>التاريخ</th>
         <th>نوع الفحص</th>
         <th>العدد الكلي</th>
         <th> P</th>
@@ -37,6 +38,7 @@ table {
     <tbody>
         @foreach ($diseases as $disease)
             <tr>
+                <td>{{ $disease->date->format('Y-m-d') }}</td>
                 <td>{{ $disease->disease_name->name }}</td>
                 <td>{{ $disease->positive + $disease->negative }}</td>
                 <td>{{ $disease->positive }}</td>
@@ -46,6 +48,7 @@ table {
         @endforeach
         <tr>
             <td><b>المجموع</b></td>
+            <td></td>
             <td><b>{{ $diseases->sum('positive') + $diseases->sum('negative') }}</b></td>
             <td><b>{{ $diseases->sum('positive') }}</b></td>
             <td><b>{{ $diseases->sum('negative') }}</b></td>
