@@ -38,17 +38,17 @@ table {
         @foreach ($diseases as $disease)
             <tr>
                 <td>{{ $disease->disease_name->name }}</td>
-                <td>{{ $disease->total_positive + $disease->total_negative }}</td>
-                <td>{{ $disease->total_positive }}</td>
-                <td>{{ $disease->total_negative }}</td>
+                <td>{{ $disease->positive + $disease->negative }}</td>
+                <td>{{ $disease->positive }}</td>
+                <td>{{ $disease->negative }}</td>
 
             </tr>
         @endforeach
         <tr>
             <td><b>المجموع</b></td>
-            <td><b>{{ $diseases->sum('total_positive') + $diseases->sum('total_negative') }}</b></td>
-            <td><b>{{ $diseases->sum('total_positive') }}</b></td>
-            <td><b>{{ $diseases->sum('total_negative') }}</b></td>
+            <td><b>{{ $diseases->sum('positive') + $diseases->sum('negative') }}</b></td>
+            <td><b>{{ $diseases->sum('positive') }}</b></td>
+            <td><b>{{ $diseases->sum('negative') }}</b></td>
         </tr>
         </tbody>
 

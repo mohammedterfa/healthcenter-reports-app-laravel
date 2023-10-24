@@ -20,10 +20,10 @@ class ReportController extends Controller
     public function detailed(Request $request)
     {
         $diseases = DiseaseData::
-    where('date', '>=', $request->start_date)
-    ->where('date', '<=', $request->end_date)
-    ->groupBy('disease') // تجميع بناءً على اسم المرض
-    ->selectRaw('disease, SUM(positive) as total_positive, SUM(negative) as total_negative')
+        where('date', '>=', $request->start_date)
+        ->where('date', '<=', $request->end_date)
+    /* ->groupBy('disease') // تجميع بناءً على اسم المرض
+    ->selectRaw('disease, SUM(positive) as total_positive, SUM(negative) as total_negative') */
     ->get();
         $start_date = $request->start_date;
         $end_date = $request->end_date;
